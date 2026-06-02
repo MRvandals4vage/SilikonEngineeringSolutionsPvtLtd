@@ -212,12 +212,12 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 112%; /* Scale up width by 12% */
     height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: scale(1.08) translateY(-4%);
+    transform: translateX(-6%); /* Shift leftward by 6% to push right watermark out of viewport */
     transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1;
 }
@@ -441,14 +441,14 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Hide the bottom watermark when image is scaled */
+    overflow: hidden; /* Hide any side watermark overflow */
 }
 
 .mobile-fallback-container img {
-    width: 100%;
-    height: 108%; /* Scale up slightly to crop the bottom area */
+    width: 112%; /* Scale up width by 12% to hide right watermark */
+    height: 100%;
     object-fit: cover;
-    transform: translateY(-4%); /* Shift upward to hide the bottom watermark */
+    transform: translateX(-6%); /* Translate leftward by 6% to push right watermark out of view */
 }
 
 .vignette-overlay {
@@ -907,11 +907,11 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 112%; /* Scale up width by 12% */
     height: 100%;
     background-size: cover;
     background-position: center;
-    transform: scale(1.08) translateY(-4%);
+    transform: translateX(-6%); /* Shift leftward by 6% to push right watermark out of viewport */
     opacity: 0.12;
     z-index: 1;
 }
