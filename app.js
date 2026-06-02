@@ -83,15 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
         renderFrame(targetFrameIndex);
     }
 
-    // Render logic with letterbox/fill fitting AND watermark-hiding crop
+    // Render logic with letterbox/fill fitting AND watermark-hiding crop on the RIGHT side
     function renderFrame(index) {
         if (!images[index] || !canvas) return;
         const img = images[index];
 
-        // Crop the bottom 8% of the source image to completely hide the watermark
-        const cropPercent = 0.08;
-        const sourceWidth = img.naturalWidth;
-        const sourceHeight = img.naturalHeight * (1 - cropPercent);
+        // Crop the right 10% of the source image to completely hide the watermark on the right
+        const cropRightPercent = 0.10;
+        const sourceWidth = img.naturalWidth * (1 - cropRightPercent);
+        const sourceHeight = img.naturalHeight;
 
         const canvasWidth = canvas.width;
         const canvasHeight = canvas.height;
@@ -114,11 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        // Draw only the cropped top 92% of the source image to hide the bottom watermark
+        // Draw only the cropped left 90% of the source image to hide the right watermark
         ctx.drawImage(
             img, 
             0, 0,                      // Source start x, y
-            sourceWidth, sourceHeight,  // Source width, height (cropped)
+            sourceWidth, sourceHeight,  // Source width, height (cropped on the right)
             offsetX, offsetY,          // Destination start x, y
             drawWidth, drawHeight      // Destination width, height
         );
@@ -127,20 +127,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Scroll Fraction & Smoothed Lerp Render
     let currentFraction = 0;
     let targetFraction = 0;
-    const lerpSpeed = 0.05; // Lowered to 0.05 for extreme buttery scroll smoothness
+    const lerpSpeed = 0.05; // Cinematic buttery scroll smoothness
 
+    // deterministic progress calculation using absolute document scroll offsets
     function getScrollFraction() {
         if (!storySection) return 0;
-        const rect = storySection.getBoundingClientRect();
         
-        // Check if inside story bounds
-        const scrollTop = -rect.top;
-        const scrollHeight = rect.height - window.innerHeight;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const sectionTop = storySection.offsetTop;
+        const sectionHeight = storySection.offsetHeight;
+        const windowHeight = window.innerHeight;
         
-        if (rect.top > 0) return 0;
-        if (rect.bottom < window.innerHeight) return 1;
-
-        return Math.max(0, Math.min(1, scrollTop / scrollHeight));
+        const scrollRange = sectionHeight - windowHeight;
+        const scrollProgress = scrollTop - sectionTop;
+        
+        if (scrollProgress < 0) return 0;
+        if (scrollProgress > scrollRange) return 1;
+        
+        return scrollProgress / scrollRange;
     }
 
     function handleScroll() {
@@ -149,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // High performance animation loop
     function updateAnimation() {
-        // Interpolate scroll position for cinematic feeling
+        // Interpolate scroll position for kinetic easing
         currentFraction += (targetFraction - currentFraction) * lerpSpeed;
 
         const isMobile = window.innerWidth <= 767;
