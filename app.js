@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Scroll Fraction & Smoothed Lerp Render
     let currentFraction = 0;
     let targetFraction = 0;
-    const lerpSpeed = 0.05; // Cinematic buttery scroll smoothness
+    const lerpSpeed = 0.20; // Increased to 0.20 for responsive, instant scroll tracking
 
     // deterministic progress calculation using absolute document scroll offsets
     function getScrollFraction() {
@@ -152,8 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // High performance animation loop
+    let lastRenderedFrameIndex = -1;
+
     function updateAnimation() {
-        // Interpolate scroll position for kinetic easing
+        // Interpolate scroll position for responsive casing
         currentFraction += (targetFraction - currentFraction) * lerpSpeed;
 
         const isMobile = window.innerWidth <= 767;
@@ -161,14 +163,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loadedCount === totalFrames) {
             const frameIndex = Math.min(totalFrames - 1, Math.floor(currentFraction * totalFrames));
             
-            if (isMobile) {
-                // Mobile dynamic image switch
-                if (mobileFallbackImg && mobileFallbackImg.src !== images[frameIndex].src) {
-                    mobileFallbackImg.src = images[frameIndex].src;
+            // Only trigger canvas draw or source swap if frame actually changes
+            if (frameIndex !== lastRenderedFrameIndex) {
+                if (isMobile) {
+                    // Mobile dynamic image switch
+                    if (mobileFallbackImg && mobileFallbackImg.src !== images[frameIndex].src) {
+                        mobileFallbackImg.src = images[frameIndex].src;
+                    }
+                } else {
+                    // Desktop Canvas drawing
+                    renderFrame(frameIndex);
                 }
-            } else {
-                // Desktop Canvas drawing
-                renderFrame(frameIndex);
+                lastRenderedFrameIndex = frameIndex;
             }
 
             // Sync text captions & stages based on smoothed progression
