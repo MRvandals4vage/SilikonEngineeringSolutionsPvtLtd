@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silicon Engineering | Premium Facade & Building Envelope Solutions</title>
+    <meta name="description" content="Silicon Engineering transforms raw structures into completed architectural landmarks through custom facade engineering, structural glazing, and high-performance building envelope systems.">
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-bold">SILICON</span>
+                <span class="logo-light">ENGINEERING</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#story" class="nav-link">The Journey</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#projects" class="nav-link">Portfolio</a>
+                <a href="#process" class="nav-link">Methodology</a>
+                <a href="#about" class="nav-link">About Us</a>
+            </nav>
+            <div class="cta-container">
+                <a href="#contact" class="btn btn-secondary nav-cta">Start Project</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay">
+        <nav class="mobile-nav-links">
+            <a href="#hero" class="mobile-nav-link">Home</a>
+            <a href="#story" class="mobile-nav-link">The Journey</a>
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#projects" class="mobile-nav-link">Portfolio</a>
+            <a href="#process" class="mobile-nav-link">Methodology</a>
+            <a href="#about" class="mobile-nav-link">About Us</a>
+            <a href="#contact" class="mobile-nav-link mobile-cta">Start Project</a>
+        </nav>
+    </div>
+
+    <!-- SECTION 1: HERO -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-frame" id="hero-bg-frame"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-up">Engineering<br>Modern Skylines</h1>
+            <p class="hero-subtitle animate-up delay-1">Facade systems, glazing solutions, curtain walls, and building envelope engineering for the next generation of architecture.</p>
+            <div class="hero-actions animate-up delay-2">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-mouse">
+                <span class="scroll-wheel"></span>
+            </span>
+            <span class="scroll-text">Scroll to install facade</span>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SCROLL STORYTELLING EXPERIENCE -->
+    <section id="story" class="scroll-story-section">
+        <div class="story-sticky-container">
+            <!-- Canvas container for desktop scroll animation -->
+            <div class="canvas-container">
+                <canvas id="facade-canvas"></canvas>
+                <div class="canvas-loader">
+                    <div class="spinner"></div>
+                    <p class="loader-text">Loading architectural data...</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="preload-progress">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Static image sequence container optimized for Mobile -->
+            <div class="mobile-fallback-container">
+                <img id="mobile-fallback-img" src="Silikon_design_frames/frame_001.jpg" alt="Silicon Engineering Building Facade Installation Progress">
+            </div>
+
+            <div class="vignette-overlay"></div>
+
+            <!-- Scroll triggers / captions -->
+            <div class="story-captions-container">
+                <!-- Cap 1 -->
+                <div class="story-caption-slide" data-stage="1">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 01 — PRE-DAWN</span>
+                        <h2 class="caption-title">Every Landmark Begins With Possibility</h2>
+                        <p class="caption-desc">We begin with the structural skeleton—an empty frame waiting for structural identity.</p>
+                    </div>
+                </div>
+                <!-- Cap 2 -->
+                <div class="story-caption-slide" data-stage="2">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 02 — SUNRISE</span>
+                        <h2 class="caption-title">Precision In Every Panel</h2>
+                        <p class="caption-desc">Lower structural floors are dressed in premium custom-engineered unitized panels.</p>
+                    </div>
+                </div>
+                <!-- Cap 3 -->
+                <div class="story-caption-slide" data-stage="3">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 03 — MORNING</span>
+                        <h2 class="caption-title">Engineered For Performance</h2>
+                        <p class="caption-desc">Advanced glazing components rise, offering superior thermal integrity and solar protection.</p>
+                    </div>
+                </div>
+                <!-- Cap 4 -->
+                <div class="story-caption-slide" data-stage="4">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 04 — AFTERNOON</span>
+                        <h2 class="caption-title">Where Structure Becomes Architecture</h2>
+                        <p class="caption-desc">The visual boundaries of the skyscraper blur as structural glass merges with the sky.</p>
+                    </div>
+                </div>
+                <!-- Cap 5 -->
+                <div class="story-caption-slide" data-stage="5">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 05 — EVENING</span>
+                        <h2 class="caption-title">Transforming Skylines</h2>
+                        <p class="caption-desc">The tower begins to cast a brand-new silhouette, redefining the metropolitan scale.</p>
+                    </div>
+                </div>
+                <!-- Cap 6 -->
+                <div class="story-caption-slide" data-stage="6">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 06 — NIGHT</span>
+                        <h2 class="caption-title">Progress Never Stops</h2>
+                        <p class="caption-desc">Warm internal lighting emerges, testing high-clarity structural glazing systems.</p>
+                    </div>
+                </div>
+                <!-- Cap 7 -->
+                <div class="story-caption-slide" data-stage="7">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 07 — MIDNIGHT</span>
+                        <h2 class="caption-title">Built With Precision</h2>
+                        <p class="caption-desc">Final details and edge cladding seal the facade structure against all weather forces.</p>
+                    </div>
+                </div>
+                <!-- Cap 8 -->
+                <div class="story-caption-slide" data-stage="8">
+                    <div class="caption-content">
+                        <span class="stage-num">STAGE 08 — NEW SUNRISE</span>
+                        <h2 class="caption-title">Building Tomorrow's Skylines</h2>
+                        <p class="caption-desc">A fully completed architectural landmark. A testament to engineering, glass excellence, and envelope resolution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SERVICES -->
+    <section id="services" class="services-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">ENGINEERING SPECTRUM</span>
+                <h2 class="section-title">Specialized Building Envelope Solutions</h2>
+                <div class="title-underline"></div>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Facade Engineering</h3>
+                    <p class="service-card-desc">Advanced analysis of load distributions, glass stress metrics, structural integrity, and thermal calculations for high-rise buildings.</p>
+                    <span class="service-card-num">01</span>
+                </div>
+                <!-- Card 2 -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="4" width="16" height="16" rx="1" />
+                            <path d="M4 8h16M4 12h16M4 16h16M8 4v16M12 4v16M16 4v16" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Curtain Wall Systems</h3>
+                    <p class="service-card-desc">State-of-the-art unitized and semi-unitized curtain wall designs that ensure weather tightness, acoustic performance, and fast installation.</p>
+                    <span class="service-card-num">02</span>
+                </div>
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 12h8M12 8v8" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Structural Glazing</h3>
+                    <p class="service-card-desc">Seamless glass installations utilizing high-strength structural silicones to create monolithic glass expanses with invisible supports.</p>
+                    <span class="service-card-num">03</span>
+                </div>
+                <!-- Card 4 -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 3h18v18H3zM9 9h6v6H9z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">ACP Cladding</h3>
+                    <p class="service-card-desc">High-precision Aluminum Composite Panel configurations providing outstanding insulation, aesthetic flexibility, and robust weather shielding.</p>
+                    <span class="service-card-num">04</span>
+                </div>
+                <!-- Card 5 -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Building Envelope Consulting</h3>
+                    <p class="service-card-desc">Expert diagnostic analysis, energy efficiency optimization, wind tunnel studies, and lifecycle evaluation for new and old developments.</p>
+                    <span class="service-card-num">05</span>
+                </div>
+                <!-- Card 6 -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Facade Design & Detailing</h3>
+                    <p class="service-card-desc">Complete drafting, BIM integration, 3D modeling, and highly precise shop drawings detailing exact facade fabrication metrics.</p>
+                    <span class="service-card-num">06</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PROJECTS -->
+    <section id="projects" class="projects-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">COMPLETED WORKS</span>
+                <h2 class="section-title">Architectural Landmarks</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="portfolio-container">
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <div class="project-image-wrapper">
+                        <!-- Custom visual mockup asset generated internally -->
+                        <div class="project-image-placeholder" style="background-image: linear-gradient(135deg, #1f2937, #374151);">
+                            <div class="project-glare"></div>
+                            <span class="project-img-label">The Vertex Tower</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-loc">Singapore</span>
+                            <span class="project-type">Unitized Curtain Wall</span>
+                        </div>
+                        <h3 class="project-title">The Vertex Tower</h3>
+                        <p class="project-desc">A stunning 62-story double-glazed skyscraper featuring high-selective low-E coatings and bespoke structural horizontal fins engineered to minimize heat gain by 35%.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-item project-reverse">
+                    <div class="project-image-wrapper">
+                        <div class="project-image-placeholder" style="background-image: linear-gradient(135deg, #111827, #1f2937);">
+                            <div class="project-glare"></div>
+                            <span class="project-img-label">Helix Plaza</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-loc">Sydney, Australia</span>
+                            <span class="project-type">Point-Supported Structural Glazing</span>
+                        </div>
+                        <h3 class="project-title">Helix Plaza</h3>
+                        <p class="project-desc">An iconic commercial headquarters wrapped in a custom tension-cable facade that spans 40 meters, maximizing visible clarity while maintaining top seismic flexibility ratings.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-item">
+                    <div class="project-image-wrapper">
+                        <div class="project-image-placeholder" style="background-image: linear-gradient(135deg, #2b3a4a, #111827);">
+                            <div class="project-glare"></div>
+                            <span class="project-img-label">AeroHQ Building</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-loc">Dubai, UAE</span>
+                            <span class="project-type">Double-Skin Intelligent Facade</span>
+                        </div>
+                        <h3 class="project-title">AeroHQ Building</h3>
+                        <p class="project-desc">A smart dynamic double-skin facade featuring mechanized automated louvers that track the sun path to optimize thermal comfort and internal glare ventilation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: IMPACT (DARK SECTION) -->
+    <section id="impact" class="impact-section">
+        <div class="section-container">
+            <div class="impact-grid">
+                <!-- Stat 1 -->
+                <div class="stat-box">
+                    <div class="stat-value"><span class="counter" data-target="150">0</span>+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                    <div class="stat-bar"></div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="stat-box">
+                    <div class="stat-value"><span class="counter" data-target="5">0</span>M+</div>
+                    <div class="stat-label">Sq Ft Installed</div>
+                    <div class="stat-bar"></div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="stat-box">
+                    <div class="stat-value"><span class="counter" data-target="20">0</span>+</div>
+                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-bar"></div>
+                </div>
+                <!-- Stat 4 -->
+                <div class="stat-box">
+                    <div class="stat-value"><span class="counter" data-target="12">0</span>+</div>
+                    <div class="stat-label">Cities Served</div>
+                    <div class="stat-bar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: PROCESS (TIMELINE) -->
+    <section id="process" class="process-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">ENGINEERING PROTOCOL</span>
+                <h2 class="section-title">The Installation Timeline</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line">
+                    <div class="timeline-progress"></div>
+                </div>
+                
+                <div class="timeline-steps">
+                    <!-- Step 1 -->
+                    <div class="timeline-step" data-index="1">
+                        <div class="step-dot"></div>
+                        <div class="step-num">01</div>
+                        <h4 class="step-title">Consultation</h4>
+                        <p class="step-desc">Analyzing boundary requirements, wind loads, thermal goals, and architectural intents.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="timeline-step" data-index="2">
+                        <div class="step-dot"></div>
+                        <div class="step-num">02</div>
+                        <h4 class="step-title">Design</h4>
+                        <p class="step-desc">Formulating conceptual mockups, 3D envelope models, and advanced visual schemas.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="timeline-step" data-index="3">
+                        <div class="step-dot"></div>
+                        <div class="step-num">03</div>
+                        <h4 class="step-title">Engineering</h4>
+                        <p class="step-desc">Stress testing glass capacities, anchor calculation matrices, and energy efficiency parameters.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="timeline-step" data-index="4">
+                        <div class="step-dot"></div>
+                        <div class="step-num">04</div>
+                        <h4 class="step-title">Fabrication</h4>
+                        <p class="step-desc">Custom production of premium unitized panels and glass coatings under micro-tolerance QC.</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="timeline-step" data-index="5">
+                        <div class="step-dot"></div>
+                        <div class="step-num">05</div>
+                        <h4 class="step-title">Installation</h4>
+                        <p class="step-desc">On-site structural hoisting, alignment, and seal application from lower levels upward.</p>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="timeline-step" data-index="6">
+                        <div class="step-dot">Dot</div>
+                        <div class="step-num">06</div>
+                        <h4 class="step-title">Completion</h4>
+                        <p class="step-desc">Handover of a fully certified, high-performance structural architectural icon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: ABOUT -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-tag">OUR MISSION</span>
+                    <h2 class="about-title">Engineering Excellence Through Facade Innovation</h2>
+                    <p class="about-para">We believe that a building's envelope is its signature. It is the boundary where engineering precision meets architectural imagination. At Silicon Engineering, we bridge this gap by transforming bare steel and concrete structures into timeless skylines.</p>
+                    <p class="about-para secondary">For over two decades, our specialized teams have pioneered structural glass systems, modular panel units, and superior weather barriers that empower standard buildings to become extraordinary landmarks.</p>
+                </div>
+                <div class="about-image-wrapper">
+                    <!-- Generative-inspired visual mockup block -->
+                    <div class="about-image" style="background-image: linear-gradient(135deg, #374151, #1f2937);">
+                        <div class="technical-grid-overlay"></div>
+                        <div class="engineering-axes">
+                            <span class="axis-lbl x-lbl">X-AXIS: 14,020mm</span>
+                            <span class="axis-lbl y-lbl">Y-AXIS: 42,910mm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: CONTACT -->
+    <section id="contact" class="contact-section">
+        <div class="contact-bg-frame" id="contact-bg-frame"></div>
+        <div class="contact-overlay"></div>
+        <div class="section-container">
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <span class="section-tag light">GET IN TOUCH</span>
+                    <h2 class="contact-title">Ready To Build Something Extraordinary?</h2>
+                    <p class="contact-desc">Connect with our primary envelope engineers to discuss architectural goals, load specifications, or request design details.</p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                                </svg>
+                            </span>
+                            <div class="detail-text">
+                                <span class="detail-label">Phone</span>
+                                <a href="tel:+18005557454" class="detail-link">+1 (800) 555-SILICON</a>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <path d="M22 6l-10 7L2 6" />
+                                </svg>
+                            </span>
+                            <div class="detail-text">
+                                <span class="detail-label">Email</span>
+                                <a href="mailto:engineering@silicon-envelope.com" class="detail-link">engineering@silicon-envelope.com</a>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </span>
+                            <div class="detail-text">
+                                <span class="detail-label">Address</span>
+                                <span class="detail-link val">Level 42, Skyline Tower, Financial District, SF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="main-contact-form" onsubmit="event.preventDefault(); alert('Engineering Request Submitted Successfully!');">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Name</label>
+                                <input type="text" id="form-name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Email</label>
+                                <input type="email" id="form-email" placeholder="john@company.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject">Facade Type of Interest</label>
+                            <select id="form-subject">
+                                <option value="curtain-wall">Unitized Curtain Wall Systems</option>
+                                <option value="glazing">Point-Supported Structural Glazing</option>
+                                <option value="cladding">ACP & Custom Metal Cladding</option>
+                                <option value="envelope-consulting">Building Envelope Consulting</option>
+                                <option value="others">Other Engineering Queries</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Project Description & Load Parameters</label>
+                            <textarea id="form-message" rows="5" placeholder="Please outline building height, estimated sq ft, seismic factors, or energy performance targets..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">Start Your Project</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-bold">SILICON</span>
+                        <span class="logo-light">ENGINEERING</span>
+                    </div>
+                    <p class="footer-tagline">Architectural landmarks engineered through dynamic building envelope innovations.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h5 class="footer-title">Engineering</h5>
+                    <a href="#story" class="footer-link">The Scroll Journey</a>
+                    <a href="#services" class="footer-link">Envelope Services</a>
+                    <a href="#projects" class="footer-link">Landmark Projects</a>
+                    <a href="#process" class="footer-link">Methodology</a>
+                </div>
+                <div class="footer-links-group">
+                    <h5 class="footer-title">Company</h5>
+                    <a href="#about" class="footer-link">About Silicon</a>
+                    <a href="#contact" class="footer-link">Envelope Team</a>
+                    <a href="#" class="footer-link">Technical Careers</a>
+                    <a href="#" class="footer-link">Safety Standards</a>
+                </div>
+                <div class="footer-links-group">
+                    <h5 class="footer-title">Social Connect</h5>
+                    <a href="#" class="footer-link">LinkedIn</a>
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">Vimeo (Project Reels)</a>
+                    <a href="#" class="footer-link">Architectural Digest</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Silicon Engineering Solutions Pvt. Ltd. All rights reserved. Precision guaranteed.</p>
+                <div class="technical-standards">ISO 9001:2015 | LEED AP | ASTM Certified</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
