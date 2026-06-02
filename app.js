@@ -151,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Scroll Fraction & Smoothed Lerp Render
     let currentFraction = 0;
     let targetFraction = 0;
-    const lerpSpeed = 0.10; // Easing tuned to 0.10 for cinematic, buttery scroll blending
 
     // Highly optimized progress calculation using cached metrics to completely bypass layout reflow thrashing
     function getScrollFraction() {
@@ -184,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastRenderedFrameIndex = -1;
 
     function updateAnimation() {
-        // Interpolate scroll position for responsive casing
-        currentFraction += (targetFraction - currentFraction) * lerpSpeed;
+        // Zero-lag scroll - snap instantly to the target scroll fraction
+        currentFraction = targetFraction;
 
         const isMobile = window.innerWidth <= 767;
 
