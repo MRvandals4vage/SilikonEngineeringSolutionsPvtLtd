@@ -6,7 +6,7 @@ import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Frame Names Definition (35 New Sequence Files)
-    const frameNames = ['frame_001.jpg', 'frame_002.jpg', 'frame_003.jpg', 'frame_004.jpg', 'frame_005.jpg', 'frame_008.jpg', 'frame_009.jpg', 'frame_010.jpg', 'frame_011.jpg', 'frame_012.jpg', 'frame_014.jpg', 'frame_015.jpg', 'frame_017.jpg', 'frame_018.jpg', 'frame_019.jpg', 'frame_020.jpg', 'frame_021.jpg', 'frame_022.jpg', 'frame_023.jpg', 'frame_024.jpg', 'frame_027.jpg', 'frame_028.jpg', 'frame_029.jpg', 'frame_030.jpg', 'frame_031.jpg', 'frame_032.jpg', 'frame_034.jpg', 'frame_035.jpg', 'frame_036.jpg', 'frame_037.jpg', 'frame_040.jpg', 'frame_042.jpg', 'frame_043.jpg', 'frame_044.jpg', 'frame_045.jpg'];
+    const frameNames = ['frame_001.jpg', 'frame_002.jpg', 'frame_003.jpg', 'frame_004.jpg', 'frame_008.jpg', 'frame_009.jpg', 'frame_010.jpg', 'frame_011.jpg', 'frame_012.jpg', 'frame_014.jpg', 'frame_015.jpg', 'frame_017.jpg', 'frame_018.jpg', 'frame_019.jpg', 'frame_020.jpg', 'frame_021.jpg', 'frame_022.jpg', 'frame_023.jpg', 'frame_024.jpg', 'frame_027.jpg', 'frame_028.jpg', 'frame_029.jpg', 'frame_030.jpg', 'frame_031.jpg', 'frame_032.jpg', 'frame_034.jpg', 'frame_035.jpg', 'frame_036.jpg', 'frame_037.jpg', 'frame_040.jpg', 'frame_042.jpg', 'frame_043.jpg', 'frame_044.jpg', 'frame_045.jpg'];
 
     const totalFrames = frameNames.length;
     const folder = '/Tower_construction_progression_v__202606022052_frames/';
@@ -140,13 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!storySection) return 0;
         const rect = storySection.getBoundingClientRect();
         
+        let sectionHeight = rect.height;
+        // Fallback to 5.5 * window.innerHeight if height is not loaded or evaluated as too small
+        if (sectionHeight <= window.innerHeight) {
+            sectionHeight = window.innerHeight * 5.5; 
+        }
+        
+        const scrollRange = sectionHeight - window.innerHeight;
+        const scrolled = -rect.top;
+        
         // When sticky container top is below viewport top, progress is 0
         if (rect.top > 0) {
             return 0;
         }
-        
-        const scrollRange = rect.height - window.innerHeight;
-        const scrolled = -rect.top;
         
         // When bottom of sticky container exits viewport bottom, progress is 1
         if (scrolled >= scrollRange) {
