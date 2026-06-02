@@ -23,6 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBgFrame = document.getElementById('hero-bg-frame');
     const contactBgFrame = document.getElementById('contact-bg-frame');
 
+    // Layout Caching Metrics to completely eliminate browser layout thrashing
+    let storyTop = 0;
+    let storyHeight = 0;
+
+    function updateLayoutMetrics() {
+        if (!storySection) return;
+        const rect = storySection.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        storyTop = rect.top + scrollTop;
+        storyHeight = rect.height;
+    }
+
     // 2. Preload Hero & Contact backgrounds first for immediate luxury load (cropped dynamically via custom CSS or Canvas)
     if (heroBgFrame) {
         heroBgFrame.style.backgroundImage = `url('${folder}${frameNames[0]}')`;
@@ -61,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 800);
         }
 
+        // Cache coordinates immediately to eliminate expensive getBoundingClientRect reflows on scroll
+        updateLayoutMetrics();
+
         // Initialize scroll states immediately based on current reload position to avoid visual jumps
         targetFraction = getScrollFraction();
         currentFraction = targetFraction;
@@ -73,7 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Start Scroll Loop
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', () => {
+            updateLayoutMetrics();
+            resizeCanvas();
+        });
     }
 
     // 4. Responsive Canvas Sizing
@@ -133,33 +151,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Scroll Fraction & Smoothed Lerp Render
     let currentFraction = 0;
     let targetFraction = 0;
-    const lerpSpeed = 0.20; // Snappy scroll trigger response
+    const lerpSpeed = 0.10; // Easing tuned to 0.10 for cinematic, buttery scroll blending
 
-    // Deterministic progress calculation relative strictly to the viewport top and bottom limits
+    // Highly optimized progress calculation using cached metrics to completely bypass layout reflow thrashing
     function getScrollFraction() {
-        if (!storySection) return 0;
-        const rect = storySection.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
         
-        let sectionHeight = rect.height;
-        // Fallback to 5.5 * window.innerHeight if height is not loaded or evaluated as too small
+        let sectionHeight = storyHeight;
         if (sectionHeight <= window.innerHeight) {
             sectionHeight = window.innerHeight * 5.5; 
         }
         
         const scrollRange = sectionHeight - window.innerHeight;
-        const scrolled = -rect.top;
+        const scrolled = scrollTop - storyTop;
         
-        // When sticky container top is below viewport top, progress is 0
-        if (rect.top > 0) {
+        if (scrolled < 0) {
             return 0;
         }
         
-        // When bottom of sticky container exits viewport bottom, progress is 1
         if (scrolled >= scrollRange) {
             return 1;
         }
         
-        return Math.max(0, Math.min(1, scrolled / scrollRange));
+        return scrolled / scrollRange;
     }
 
     function handleScroll() {
