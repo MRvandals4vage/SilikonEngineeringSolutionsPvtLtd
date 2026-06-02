@@ -61,9 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 800);
         }
 
-        // Initialize Canvas size and render initial frame
+        // Initialize scroll states immediately based on current reload position to avoid visual jumps
+        targetFraction = getScrollFraction();
+        currentFraction = targetFraction;
+
+        // Initialize Canvas size and render correct initial frame
         resizeCanvas();
-        renderFrame(0);
+        
+        const initialFrameIndex = Math.min(totalFrames - 1, Math.floor(currentFraction * totalFrames));
+        renderFrame(initialFrameIndex);
 
         // Start Scroll Loop
         window.addEventListener('scroll', handleScroll);
@@ -127,24 +133,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Scroll Fraction & Smoothed Lerp Render
     let currentFraction = 0;
     let targetFraction = 0;
-    const lerpSpeed = 0.20; // Increased to 0.20 for responsive, instant scroll tracking
+    const lerpSpeed = 0.20; // Snappy scroll trigger response
 
-    // deterministic progress calculation using absolute document scroll offsets
+    // Deterministic progress calculation relative strictly to the viewport top and bottom limits
     function getScrollFraction() {
         if (!storySection) return 0;
+        const rect = storySection.getBoundingClientRect();
         
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const sectionTop = storySection.offsetTop;
-        const sectionHeight = storySection.offsetHeight;
-        const windowHeight = window.innerHeight;
+        // When sticky container top is below viewport top, progress is 0
+        if (rect.top > 0) {
+            return 0;
+        }
         
-        const scrollRange = sectionHeight - windowHeight;
-        const scrollProgress = scrollTop - sectionTop;
+        const scrollRange = rect.height - window.innerHeight;
+        const scrolled = -rect.top;
         
-        if (scrollProgress < 0) return 0;
-        if (scrollProgress > scrollRange) return 1;
+        // When bottom of sticky container exits viewport bottom, progress is 1
+        if (scrolled >= scrollRange) {
+            return 1;
+        }
         
-        return scrollProgress / scrollRange;
+        return Math.max(0, Math.min(1, scrolled / scrollRange));
     }
 
     function handleScroll() {
